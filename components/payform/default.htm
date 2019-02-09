@@ -1,0 +1,26 @@
+<form id='FrmHtmlCheckout' name='FrmHtmlCheckout' action='https://ecom.nbu.com:4222/PrimePg1703/OrderProcessingEngine/RedirectLink.aspx' method='post'>
+        
+    <!-- Required - has default value -->
+    <input id='Version' type='hidden' name='Version' value='1.0.0'>
+    <input id='MerID' type='hidden' value='11110057' name='MerID' >
+    <input id='AcqID' type='hidden' value='491699' name='AcqID' >
+    <input id='SignatureMethod' type='hidden' value='SHA1' name='SignatureMethod'
+    >
+    <input id='PurchaseCurrency' type='hidden' value='840' name='PurchaseCurrency'>
+    <input id='PurchaseCurrencyExponent' type='hidden' value='2' name='PurchaseCurrencyExponent'>
+
+    <!-- Required - merchant params -->    
+    <input id='Signature' type='hidden' value='{{sign}}' name='Signature'>
+    <input id='MerRespURL' type='hidden' value='https://mangu.uz/test1' name='MerRespURL'>
+    <input id='PurchaseAmt' type='hidden' value='{{data.amount}}' name='PurchaseAmt'>
+    <input id='OrderID' type='hidden' value='{{data.order_id}}' name='OrderID' >         
+         
+    <input style="Z-INDEX: 101; LEFT: 264px; POSITION: absolute; TOP: 152px" type="submit" onclick="Checkout" value="Submit">
+</form>
+    
+<script language='javascript'>
+     function CheckOut() {
+        document.FrmHtmlCheckout.action = 'https://ecom.nbu.com:4222/PrimePg1703/OrderProcessingEngine/RedirectLink.aspx';
+        document.FrmHtmlCheckout.submit(); 
+     }
+</script>
