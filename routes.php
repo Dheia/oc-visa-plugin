@@ -1,0 +1,1 @@
+<?php Route::any('/visa-webhook', 'Shohabbos\Visa\Controllers\Transactions@handler');

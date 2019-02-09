@@ -1,0 +1,10 @@
+plugin:
+    name: 'shohabbos.visa::lang.plugin.name'
+    description: 'shohabbos.visa::lang.plugin.description'
+    author: Shohabbos
+    icon: oc-icon-cc-visa
+    homepage: 'https://itmaker.uz'
+permissions:
+    manage_transactions:
+        tab: 'shohabbos.visa::lang.plugin.name'
+        label: 'Manage transactions'
