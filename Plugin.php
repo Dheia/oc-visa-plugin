@@ -18,6 +18,9 @@ class Plugin extends PluginBase
 
     public function registerComponents()
     {
+        return [
+            'Shohabbos\Visa\Components\PayForm' => 'visaPayForm',
+        ];
     }
 
     public function registerSettings() {

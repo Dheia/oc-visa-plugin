@@ -20,13 +20,16 @@ class PayForm extends ComponentBase
         ];
     }
 
-    public function onGenerateForm() {
+    public function onRun() {
+    	$amount = $this->getAmountInUsd(2000);
+    	$amount = $this->generateVisaAmount($amount);
+
         $data = [
 	        'password' => Settings::get('password'),
 	        'merchant_id' => Settings::get('mer_id'),
 	        'acquirer_id' => Settings::get('acq_id'),
-	        'order_id' => 'SENTRYORD01154324',
-	        'amount' => '000000000050',
+	        'order_id' => rand(),
+	        'amount' => $amount,
 	        'currency' => Settings::get('currency'),
 	    ];
 	    
@@ -35,7 +38,19 @@ class PayForm extends ComponentBase
 	    // set data
 	    $this->page['data'] = $data;
 	    $this->page['sign'] = base64_encode(sha1($string, true));
+        $this->page['handler'] = url(Settings::get('handler'));
+    }
+
+    public function generateVisaAmount($amount) {
+    	$amount = str_replace(".", "", $amount);
+    	$amount = str_pad($amount, 12, '0', STR_PAD_LEFT);
+
+    	return $amount;
     }
     
-    
+    public function getAmountInUsd($amount) {
+    	$rate = Settings::get('rate');
+
+    	return round($amount / $rate, 2);
+    }
 }

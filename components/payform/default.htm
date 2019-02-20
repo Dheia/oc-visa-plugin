@@ -11,7 +11,7 @@
 
     <!-- Required - merchant params -->    
     <input id='Signature' type='hidden' value='{{sign}}' name='Signature'>
-    <input id='MerRespURL' type='hidden' value='https://mangu.uz/test1' name='MerRespURL'>
+    <input id='MerRespURL' type='hidden' value='{{handler}}' name='MerRespURL'>
     <input id='PurchaseAmt' type='hidden' value='{{data.amount}}' name='PurchaseAmt'>
     <input id='OrderID' type='hidden' value='{{data.order_id}}' name='OrderID' >         
          

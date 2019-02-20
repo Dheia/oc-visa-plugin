@@ -19,6 +19,12 @@ tabs:
             type: dropdown
             options:
                 840: USD
+        rate:
+            default: 840
+            required: 1
+            label: 'shohabbos.visa::lang.settings.rate'
+            tab: 'shohabbos.visa::lang.settings.tab_main'
+            span: auto
         exponent:
             default: 2
             required: 1

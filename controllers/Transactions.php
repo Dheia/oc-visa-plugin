@@ -25,6 +25,7 @@ class Transactions extends Controller
         SettingsManager::setContext('Shohabbos.Visa', 'transactions');
     }
 
+
     public function handler() {
         $data = Input::all();
 
@@ -47,7 +48,7 @@ class Transactions extends Controller
         $string = implode('', $data);
         $sign = base64_encode(sha1($string, true));
 
-
+        Event::fire('shohabbos.visa.transactionApproved', [$data]);
     }
     
 }
