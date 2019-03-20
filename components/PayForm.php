@@ -21,14 +21,14 @@ class PayForm extends ComponentBase
     }
 
     public function onRun() {
-    	$amount = $this->getAmountInUsd(2000);
+    	$amount = $this->getAmountInUsd(input('amount'));
     	$amount = $this->generateVisaAmount($amount);
 
         $data = [
 	        'password' => Settings::get('password'),
 	        'merchant_id' => Settings::get('mer_id'),
 	        'acquirer_id' => Settings::get('acq_id'),
-	        'order_id' => rand(),
+	        'order_id' => input('order_id'),
 	        'amount' => $amount,
 	        'currency' => Settings::get('currency'),
 	    ];
