@@ -20,4 +20,6 @@ class Transaction extends Model
      */
     public $rules = [
     ];
+
+    public $guarded = ['id'];
 }

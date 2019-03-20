@@ -7,6 +7,7 @@ use Redirect;
 use Backend\Classes\Controller;
 use System\Classes\SettingsManager;
 use Shohabbos\Visa\Models\Settings;
+use Shohabbos\Visa\Models\Transaction;
 
 class Transactions extends Controller
 {
@@ -37,7 +38,9 @@ class Transactions extends Controller
         $mer_id = Settings::get("mer_id");
         $acq_id = Settings::get("acq_id");
 
-
+        if ( !isset($data['OrderID']) ) {
+            return Redirect::to("/");
+        }
 
         // check sign
         $data = [
@@ -47,14 +50,17 @@ class Transactions extends Controller
             'order_id' => $data['OrderID'],
             'amount' => $data['OrderID'],
             'currency' => Settings::get('currency'),
+            'code' => $data['ReasonCode'],
+            'code_desc' => $data['ReasonCodeDesc'],
+            'payer_name' => $data['BillToToFirstName'],
         ];
-        
+
         $string = implode('', $data);
         $sign = base64_encode(sha1($string, true));
 
         Event::fire('shohabbos.visa.transactionApproved', [$data]);
         
-        Redirect::to("/");
+        return Redirect::to("/");
     }
     
 }
